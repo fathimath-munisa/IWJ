@@ -12,15 +12,14 @@ public class Student extends JFrame
     JButton allbtn,rollbtn;
     JPanel panel;
     JTable table;
-	JScrollPane scroll;
+    JScrollPane scroll;
  
     public Student()
-	{
+    {
           super("Students Record");
           String driver = "com.mysql.jdbc.Driver";
           String url = "jdbc:mysql://localhost/college_20";
-         
-		  lbl = new JLabel("Students Record");
+          lbl = new JLabel("Students Record");
           lbl.setBounds(200, 35, 100, 20);
           textbox = new JTextField();
           textbox.setBounds(130,100,150,20); 
@@ -30,19 +29,19 @@ public class Student extends JFrame
           rollbtn.setBounds(300,100,150,20);
           allbtn = new JButton("Display full record");
           allbtn.setBounds(180,360,150,20);
-		  DefaultTableModel model = new DefaultTableModel(new String[]{"Roll No", "Name", "Dept", "Division","Total Marks"}, 0);
+	  DefaultTableModel model = new DefaultTableModel(new String[]{"Roll No", "Name", "Dept", "Division","Total Marks"}, 0);
           table = new JTable(model);
           scroll = new JScrollPane(table); 
           scroll.setBounds(50,150,400,200);
            
-		  add(lbl);
+	  add(lbl);
           add(textbox);
           add(label);
           add(rollbtn); 
           add(allbtn);
-		  add(scroll);
+	  add(scroll);
 		  
-		  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
           setLayout(null);
           setVisible(true);
           setSize(550,450);
@@ -79,12 +78,12 @@ public class Student extends JFrame
              public void actionPerformed(ActionEvent ae)
              {
                 String textvalue =textbox.getText();
-				if(textvalue=="")
-					JOptionPane.showMessageDialog(null,"Enter roll no");
-				else
-				{
+		if(textvalue=="")
+			JOptionPane.showMessageDialog(null,"Enter roll no");
+		else
+		{
 					 
-					model.setRowCount(0);
+		    model.setRowCount(0);
                     try
                     { 
                         Class.forName(driver); 
@@ -102,15 +101,15 @@ public class Student extends JFrame
                         if(i <1)
                         {
                             JOptionPane.showMessageDialog(null, "No Record Found","Error",JOptionPane.ERROR_MESSAGE);
-						}
-					}
-					catch(Exception ex)
+			}
+		    }
+		    catch(Exception ex)
                     {
                        JOptionPane.showMessageDialog(null, ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
-					}
-				}
-			 }
-		 });
+		    }
+		}
+	    }
+        });
 		
     }
 }
